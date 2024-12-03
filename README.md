@@ -9,10 +9,14 @@
 - 속도 개선 : Text 2 Img 파이프라인에서에서 Img 2 Img 파이프라인으로 수정하여 속도 향상에 기여했습니다. 
 
 ## **2.Source Code**
-###**수정 전**
+### **수정 전**
+
+기존 Stable Makeup
+![image](https://github.com/user-attachments/assets/4722f650-2a05-4c0a-9ac6-9641a73ef47f)
 
 
-###**수정 후**
+### **수정 후**
+
 vae.decode 이전에 detail latent mix
 ![image](https://github.com/user-attachments/assets/71571431-edc9-422f-a0c0-db9b1f6b8ea3)
 
