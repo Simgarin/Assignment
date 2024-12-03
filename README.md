@@ -9,6 +9,11 @@
 - 속도 개선 : Text 2 Img 파이프라인에서에서 Img 2 Img 파이프라인으로 수정하여 속도 향상에 기여했습니다. 
 
 ## **2.Source Code**
+code 참고
+
+## **3.Performance Metrics**
+- 속도 : 8.2s ~ 9.8s
+- 결과
 ### **수정 전**
 
 기존 Stable Makeup
@@ -26,12 +31,9 @@ vae.decode 이전에 detail latent mix
 
 ### **결과물**
 
+가벼운 데일리 메이크업(메이크업 유지 strength 1.2), 진한 분장(메이크업 유지 strength 2)
+![image](https://github.com/user-attachments/assets/1b455e1b-aecd-40d0-905f-9709aa3097c0)
 
-
-
-## **3.Performance Metrics**
-- 속도 : 8.2s ~ 9.8s
-- 결과
 
 ## **4.Installation and Usage**
 - Python >= 3.8
