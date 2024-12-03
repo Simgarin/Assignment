@@ -20,6 +20,15 @@
 vae.decode 이전에 detail latent mix
 ![image](https://github.com/user-attachments/assets/71571431-edc9-422f-a0c0-db9b1f6b8ea3)
 
+
+![image](https://github.com/user-attachments/assets/07d70741-b59e-40c4-98a3-e92b9e92878e)
+
+
+### **결과물**
+
+
+
+
 ## **3.Performance Metrics**
 - 속도 : 8.2s ~ 9.8s
 - 결과
