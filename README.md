@@ -9,7 +9,19 @@
 - 속도 개선 : Text 2 Img 파이프라인에서에서 Img 2 Img 파이프라인으로 수정하여 속도 향상에 기여했습니다. 
 
 ## **2.Source Code**
-code 참고
+├── assets/               # 참고 및 Readme용 이미지
+├── dataset/              # 학습용 dataset
+│   ├── facemorpher/           # 학습을 위한 facemorphing
+|   ├── ledits_utils/          # Face parsing
+├── detail_encoder/       # 메이크업 정보 추출을 위한 encoder 및 clip
+├── diffuser/             # Stable Diffusion의 pipeline들
+├── models/               # Pretrained model 저장 경로
+├── test_imgs/            # test용 이미지 저장 경로
+├── gradio_demo_kps.py        # gradio를 이용한 webui 실행
+├── infer_kps.py              # pipeline과 gardio_demo_kps 연결
+├── pipeline_sd15.py          # FaceLab의 pipeline
+├── train.py                  # Train
+├── requirements.txt          # Python dependencies
 
 ## **3.Performance Metrics**
 - 속도 : 8.2s ~ 9.8s
