@@ -7,9 +7,9 @@ from diffusers import DDIMScheduler, DPMSolverMultistepScheduler, ControlNetMode
 from detail_encoder.encoder_plus import detail_encoder
 from spiga_draw import *
 from PIL import Image
-from spiga.inference.config import ModelConfig
-from spiga.inference.framework import SPIGAFramework
-from facelib import FaceDetector
+from SPIGA.spiga.inference.config import ModelConfig
+from SPIGA.spiga.inference.framework import SPIGAFramework
+from FaceLib.facelib import FaceDetector
 
 torch.cuda.set_device(0)
 
@@ -30,7 +30,7 @@ def get_draw(pil_img, size):
         return spigas_faces
 
 # Initialize the model
-model_id = "sd_model_v1-5"  # your sd1.5 model path
+model_id = "danbrown/RevAnimated-v1-2-2"  # your sd1.5 model path
 base_path = "./models/stablemakeup"
 makeup_encoder_path = base_path + "/pytorch_model.bin"
 id_encoder_path = base_path + "/pytorch_model_1.bin"
@@ -39,7 +39,7 @@ pose_encoder_path = base_path + "/pytorch_model_2.bin"
 Unet = OriginalUNet2DConditionModel.from_pretrained(model_id, subfolder="unet").to("cuda")
 id_encoder = ControlNetModel.from_unet(Unet)
 pose_encoder = ControlNetModel.from_unet(Unet)
-makeup_encoder = detail_encoder(Unet, "./models/image_encoder_l", "cuda", dtype=torch.float32)
+makeup_encoder = detail_encoder(Unet, "./models/clip-vit-base-patch32", "cuda", dtype=torch.float32)
 makeup_state_dict = torch.load(makeup_encoder_path)
 id_state_dict = torch.load(id_encoder_path)
 id_encoder.load_state_dict(id_state_dict, strict=False)
@@ -71,10 +71,10 @@ def model_call(id_image, makeup_image, num):
     return result_img
 
 # Create a Gradio interface
-image1 = gr.inputs.Image(label="id_image")
-image2 = gr.inputs.Image(label="makeup_image")
-number = gr.inputs.Slider(minimum=1.01, maximum=5, default=1.5, label="makeup_guidance_scale")
-output = gr.outputs.Image(type="pil", label="Output Image")
+image1 = gr.Image(label="id_image")
+image2 = gr.Image(label="makeup_image")
+number = gr.Slider(minimum=1.01, maximum=5, default=1.5, label="makeup_guidance_scale")
+output = gr.Image(type="pil", label="Output Image")
 
 iface = gr.Interface(
     fn=lambda id_image, makeup_image, num: model_call(id_image, makeup_image, num),
